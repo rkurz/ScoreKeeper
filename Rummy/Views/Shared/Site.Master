@@ -1,0 +1,40 @@
+﻿<%@ Master Language="VB" Inherits="System.Web.Mvc.ViewMasterPage" %>
+<%@ Import Namespace="Rummy" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head runat="server">
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="-1" />
+
+    <title>Rummy</title>
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0a4.1/jquery.mobile-1.0a4.1.min.css" />
+    <%= Utility.AddStylesheet(Page, "~/Content/Site.css")%>
+
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.5.2.min.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/mobile/1.0a4.1/jquery.mobile-1.0a4.1.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $.ajaxSetup({
+                // Disable caching of AJAX responses     
+                cache: false
+            });
+        });
+    </script>
+    <!--
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // disable ajax nav
+            $.mobile.ajaxLinksEnabled = false;
+        });
+    </script>
+    -->
+</head>
+<body>
+    <div data-role="page">
+        <asp:ContentPlaceHolder ID="MainContent" runat="server"></asp:ContentPlaceHolder>
+    </div>
+</body>
+</html>

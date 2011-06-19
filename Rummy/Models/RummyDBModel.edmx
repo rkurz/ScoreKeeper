@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Rummy.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="RummyStoreContainer">
+          <EntitySet Name="Game" EntityType="Rummy.Store.Game" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="GamePlayer" EntityType="Rummy.Store.GamePlayer" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="GamePointsByRound" EntityType="Rummy.Store.GamePointsByRound" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Player" EntityType="Rummy.Store.Player" store:Type="Tables" Schema="dbo" />
+        </EntityContainer>
+        <EntityType Name="Game">
+          <Key>
+            <PropertyRef Name="GameId" />
+          </Key>
+          <Property Name="GameId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="PlayedOn" Type="datetime" Nullable="false" />
+          <Property Name="Status" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="RequiredScoreToWin" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GamePlayer">
+          <Key>
+            <PropertyRef Name="GameId" />
+            <PropertyRef Name="PlayerId" />
+          </Key>
+          <Property Name="GameId" Type="int" Nullable="false" />
+          <Property Name="PlayerId" Type="int" Nullable="false" />
+          <Property Name="IsWinner" Type="char" Nullable="false" MaxLength="1" />
+          <Property Name="Points" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GamePointsByRound">
+          <Key>
+            <PropertyRef Name="GameId" />
+            <PropertyRef Name="PlayerId" />
+            <PropertyRef Name="RoundNumber" />
+          </Key>
+          <Property Name="GameId" Type="int" Nullable="false" />
+          <Property Name="PlayerId" Type="int" Nullable="false" />
+          <Property Name="RoundNumber" Type="int" Nullable="false" />
+          <Property Name="Points" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Player">
+          <Key>
+            <PropertyRef Name="PlayerId" />
+          </Key>
+          <Property Name="PlayerId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Rummy" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="RummyEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Games" EntityType="Rummy.Game" />
+          <EntitySet Name="GamePlayers" EntityType="Rummy.GamePlayer" />
+          <EntitySet Name="GamePointsByRounds" EntityType="Rummy.GamePointsByRound" />
+          <EntitySet Name="Players" EntityType="Rummy.Player" />
+        </EntityContainer>
+        <EntityType Name="Game">
+          <Key>
+            <PropertyRef Name="GameId" />
+          </Key>
+          <Property Name="GameId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PlayedOn" Type="DateTime" Nullable="false" />
+          <Property Name="Status" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="RequiredScoreToWin" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GamePlayer">
+          <Key>
+            <PropertyRef Name="GameId" />
+            <PropertyRef Name="PlayerId" />
+          </Key>
+          <Property Name="GameId" Type="Int32" Nullable="false" />
+          <Property Name="PlayerId" Type="Int32" Nullable="false" />
+          <Property Name="IsWinner" Type="String" Nullable="false" MaxLength="1" Unicode="false" FixedLength="true" />
+          <Property Name="Points" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GamePointsByRound">
+          <Key>
+            <PropertyRef Name="GameId" />
+            <PropertyRef Name="PlayerId" />
+            <PropertyRef Name="RoundNumber" />
+          </Key>
+          <Property Name="GameId" Type="Int32" Nullable="false" />
+          <Property Name="PlayerId" Type="Int32" Nullable="false" />
+          <Property Name="RoundNumber" Type="Int32" Nullable="false" />
+          <Property Name="Points" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Player">
+          <Key>
+            <PropertyRef Name="PlayerId" />
+          </Key>
+          <Property Name="PlayerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="RummyStoreContainer" CdmEntityContainer="RummyEntities">
+          <EntitySetMapping Name="Games"><EntityTypeMapping TypeName="Rummy.Game"><MappingFragment StoreEntitySet="Game">
+            <ScalarProperty Name="GameId" ColumnName="GameId" />
+            <ScalarProperty Name="PlayedOn" ColumnName="PlayedOn" />
+            <ScalarProperty Name="Status" ColumnName="Status" />
+            <ScalarProperty Name="RequiredScoreToWin" ColumnName="RequiredScoreToWin" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="GamePlayers"><EntityTypeMapping TypeName="Rummy.GamePlayer"><MappingFragment StoreEntitySet="GamePlayer">
+            <ScalarProperty Name="GameId" ColumnName="GameId" />
+            <ScalarProperty Name="PlayerId" ColumnName="PlayerId" />
+            <ScalarProperty Name="IsWinner" ColumnName="IsWinner" />
+            <ScalarProperty Name="Points" ColumnName="Points" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="GamePointsByRounds"><EntityTypeMapping TypeName="Rummy.GamePointsByRound"><MappingFragment StoreEntitySet="GamePointsByRound">
+            <ScalarProperty Name="GameId" ColumnName="GameId" />
+            <ScalarProperty Name="PlayerId" ColumnName="PlayerId" />
+            <ScalarProperty Name="RoundNumber" ColumnName="RoundNumber" />
+            <ScalarProperty Name="Points" ColumnName="Points" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Players"><EntityTypeMapping TypeName="Rummy.Player"><MappingFragment StoreEntitySet="Player">
+            <ScalarProperty Name="PlayerId" ColumnName="PlayerId" />
+            <ScalarProperty Name="Name" ColumnName="Name" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="RummyDBModel">
+        <EntityTypeShape EntityType="Rummy.Game" Width="2.625" PointX="0.75" PointY="0.75" Height="1.787985026041667" IsExpanded="true" />
+        <EntityTypeShape EntityType="Rummy.GamePlayer" Width="1.5" PointX="4.5" PointY="0.75" Height="1.7879850260416674" IsExpanded="true" />
+        <EntityTypeShape EntityType="Rummy.GamePointsByRound" Width="2.5" PointX="0.75" PointY="3.75" Height="1.787985026041667" IsExpanded="true" />
+        <EntityTypeShape EntityType="Rummy.Player" Width="1.5" PointX="4.125" PointY="3.75" Height="1.4033821614583335" IsExpanded="true" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Rummy", "Rummy\Rummy.vbproj", "{32CB2C8D-331C-4E28-8946-C28D5D829EB3}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Rummy.IntegrationTests", "Rummy.IntegrationTests\Rummy.IntegrationTests.vbproj", "{4D34F335-212B-40A0-B4F3-48D604735228}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{32CB2C8D-331C-4E28-8946-C28D5D829EB3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32CB2C8D-331C-4E28-8946-C28D5D829EB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32CB2C8D-331C-4E28-8946-C28D5D829EB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32CB2C8D-331C-4E28-8946-C28D5D829EB3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D34F335-212B-40A0-B4F3-48D604735228}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D34F335-212B-40A0-B4F3-48D604735228}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D34F335-212B-40A0-B4F3-48D604735228}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D34F335-212B-40A0-B4F3-48D604735228}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

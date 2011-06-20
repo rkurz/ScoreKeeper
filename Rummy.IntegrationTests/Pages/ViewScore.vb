@@ -3,25 +3,37 @@
 
     Public ReadOnly Property AddScoreLink As Link
         Get
-            Return Document.Link(Find.ByText("Add Score"))
+            Dim container As Div
+            container = Document.Div(Find.ByClass("ui-page ui-body-c ui-page-active"))
+
+            Return container.Link(Find.ByText("Add Score"))
         End Get
     End Property
 
     Public ReadOnly Property NewGameLink As Link
         Get
-            Return Document.Link(Find.ByText("New Game"))
+            Dim container As Div
+            container = Document.Div(Find.ByClass("ui-page ui-body-c ui-page-active"))
+
+            Return container.Link(Find.ByText("New Game"))
         End Get
     End Property
 
     Public ReadOnly Property StandingsLink As Link
         Get
-            Return Document.Link(Find.ByText("Standings"))
+            Dim container As Div
+            container = Document.Div(Find.ByClass("ui-page ui-body-c ui-page-active"))
+
+            Return container.Link(Find.ByText("Standings"))
         End Get
     End Property
 
     Public ReadOnly Property ViewScoreDetailsLink As Link
         Get
-            Return Document.Link(Find.ByText("Details"))
+            Dim container As Div
+            container = Document.Div(Find.ByClass("ui-page ui-body-c ui-page-active"))
+
+            Return container.Link(Find.ByText("Details"))
         End Get
     End Property
 

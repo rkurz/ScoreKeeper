@@ -14,7 +14,9 @@
 
     Public ReadOnly Property PointsRequiredToWin As TextField
         Get
-            Return Document.TextField(Find.ById("PointsRequiredToWin"))
+            Dim container As Div
+            container = Document.Div(Find.ByClass("ui-page ui-body-c ui-page-active"))
+            Return container.TextField(Find.ById("PointsRequiredToWin"))
         End Get
     End Property
 

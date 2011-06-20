@@ -3,7 +3,8 @@
 <asp:Content ID="MainContent" ContentPlaceHolderID="MainContent" runat="server">
     <div data-role="header" data-backbtn="false">
         <h1>Rummy</h1>
-        <a href="<%= Url.Action("StartGame", "Home") %>" class="ui-btn-right">New Game</a>
+        <!--<a href="<%= Url.Action("StartGame", "Home") %>" class="ui-btn-right">New Game</a>-->
+        <%= Html.ActionLink("New Game", "StartGame", "Home", New With {.rand = New Random().Next}, New With {.class = "ui-btn-right"})%>
     </div>
     <div data-role="content">
         <table width="100%" style="vertical-align: middle; text-align: center;">

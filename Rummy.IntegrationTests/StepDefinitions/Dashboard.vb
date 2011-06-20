@@ -34,6 +34,53 @@ Namespace Rummy.IntegrationTests
         <[Then]("I should be redirected to the start game page")>
         Public Sub ThenIShouldBeRedirectedToTheStartGamePage()
             Assert.IsTrue(WebBrowser.Page(Of StartGamePage).IsActivePage)
+            Assert.IsTrue(WebBrowser.Page(Of StartGamePage).PointsRequiredToWin.Exists)
+        End Sub
+
+        <Given("I have finished a game")>
+        Public Sub GivenIHaveFinishedAGame()
+            'Start new game
+            BrowseTo("/Home/StartGame")
+            WebBrowser.Page(Of StartGamePage).StartNewGame("10")
+            System.Threading.Thread.Sleep(2000)
+            WebBrowser.WaitForComplete()
+
+            'Go to the add score page
+            WebBrowser.Page(Of ViewScorePage).AddScoreLink.Click()
+            System.Threading.Thread.Sleep(2000)
+            WebBrowser.WaitForComplete()
+
+            'Add scores
+            WebBrowser.Page(Of AddScorePage).Points(1).TypeText("5")
+            WebBrowser.Page(Of AddScorePage).Points(2).TypeText("0")
+
+            'click submit
+            WebBrowser.Page(Of AddScorePage).SubmitButton.Click()
+            System.Threading.Thread.Sleep(2000)
+            WebBrowser.WaitForComplete()
+
+            'Go to the add score page
+            WebBrowser.Page(Of ViewScorePage).AddScoreLink.Click()
+            System.Threading.Thread.Sleep(2000)
+            WebBrowser.WaitForComplete()
+
+            'Add scores
+            WebBrowser.Page(Of AddScorePage).Points(1).TypeText("15")
+            WebBrowser.Page(Of AddScorePage).Points(2).TypeText("7")
+
+            'click submit
+            WebBrowser.Page(Of AddScorePage).SubmitButton.Click()
+            System.Threading.Thread.Sleep(2000)
+            WebBrowser.WaitForComplete()
+
+            
+        End Sub
+
+        <Given("I am back on the dashboard page")>
+        Public Sub GivenIAmBackOnTheDashboardPage()
+            WebBrowser.Page(Of ViewScorePage).StandingsLink.Click()
+            System.Threading.Thread.Sleep(2000)
+            WebBrowser.WaitForComplete()
         End Sub
     End Class
 

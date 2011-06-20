@@ -14,7 +14,10 @@
 
     Public ReadOnly Property Points(ByVal playerId As Integer) As NumericTextField
         Get
-            Return Document.ElementOfType(Of NumericTextField)(Find.ById(String.Format("txtPlayer_{0:d}", playerId)))
+            Dim container As Div
+            container = Document.Div(Find.ByClass("ui-page ui-body-c ui-page-active"))
+
+            Return container.ElementOfType(Of NumericTextField)(Find.ById(String.Format("txtPlayer_{0:d}", playerId)))
         End Get
     End Property
     'Public ReadOnly Property Points(ByVal playerId As Integer) As TextField
@@ -27,7 +30,10 @@
 
     Public ReadOnly Property SubmitButton As Button
         Get
-            Return Document.Button(Find.ByValue("Submit"))
+            Dim container As Div
+            container = Document.Div(Find.ByClass("ui-page ui-body-c ui-page-active"))
+
+            Return container.Button(Find.ByValue("Submit"))
         End Get
     End Property
 

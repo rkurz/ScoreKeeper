@@ -10,3 +10,9 @@ Scenario: Starting a new game
     Given I am on the dashboard page
     When I click the new game link
     Then I should be redirected to the start game page
+
+Scenario: Starting a new game after a prior game finished
+    Given I have finished a game
+    And I am back on the dashboard page
+    When I click the new game link
+    Then I should be redirected to the start game page

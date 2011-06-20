@@ -63,6 +63,18 @@ Namespace Rummy.IntegrationTests.Features
             testRunner.Then("I should be redirected to the start game page")
             testRunner.CollectScenarioErrors
         End Sub
+        
+        <NUnit.Framework.TestAttribute(),  _
+         NUnit.Framework.DescriptionAttribute("Starting a new game after a prior game finished")>  _
+        Public Overridable Sub StartingANewGameAfterAPriorGameFinished()
+            Dim scenarioInfo As TechTalk.SpecFlow.ScenarioInfo = New TechTalk.SpecFlow.ScenarioInfo("Starting a new game after a prior game finished", CType(Nothing,String()))
+            Me.ScenarioSetup(scenarioInfo)
+            testRunner.Given("I have finished a game")
+            testRunner.And("I am back on the dashboard page")
+            testRunner.When("I click the new game link")
+            testRunner.Then("I should be redirected to the start game page")
+            testRunner.CollectScenarioErrors
+        End Sub
     End Class
 End Namespace
 #End Region

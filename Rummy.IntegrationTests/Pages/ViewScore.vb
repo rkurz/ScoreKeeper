@@ -15,7 +15,7 @@
 
     Public ReadOnly Property StandingsLink As Link
         Get
-            Return Document.Link(Find.ByText("Standings")
+            Return Document.Link(Find.ByText("Standings"))
         End Get
     End Property
 

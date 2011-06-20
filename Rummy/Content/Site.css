@@ -17,6 +17,10 @@
     font-size: xx-large;
     font-weight: bold;
 }
+.score-round
+{
+    font-size: small;
+}
 
 .winner
 {

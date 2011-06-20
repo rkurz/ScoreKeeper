@@ -23,6 +23,11 @@
                     <label class="score-value" id="lblScore_<%= item.PlayerId %>"><%= Model.FindScore(item.PlayerId) %></label>
                 </div>
             <% Next%>
+            <% If Model.NextRoundNumber > 1 Then%>
+                <div>
+                    <label id="lblRound" class="score-round">After round: <%= Model.NextRoundNumber-1 %></label>
+                </div>
+            <% End If%>
             </div>
             <%  If Model.IsGameOver Then %>
                 <div>

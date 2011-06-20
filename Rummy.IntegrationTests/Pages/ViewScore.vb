@@ -13,6 +13,12 @@
         End Get
     End Property
 
+    Public ReadOnly Property StandingsLink As Link
+        Get
+            Return Document.Link(Find.ByText("Standings")
+        End Get
+    End Property
+
     Public ReadOnly Property ViewScoreDetailsLink As Link
         Get
             Return Document.Link(Find.ByText("Details"))
@@ -31,7 +37,13 @@
         container = Document.Div(Find.ByClass("ui-page ui-body-c ui-page-active"))
 
         'Ensure "add score" link is hidden, "new game" link is visible, "game over" text is shown, winner highlighted in red.
+        If Me.NewGameLink.Exists Then
+            Return False
+        End If
         If Not Me.NewGameLink.Exists Then
+            Return False
+        End If
+        If Not Me.StandingsLink.Exists Then
             Return False
         End If
 

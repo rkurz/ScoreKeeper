@@ -3,6 +3,9 @@
 <asp:Content ID="MainContent" ContentPlaceHolderID="MainContent" runat="server">
     <%= ""%>
     <div data-role="header" data-backbtn="false">
+        <%  If Model.IsGameOver Then %>
+            <%= Html.ActionLink("Standings", "Index", "Home", {}, {})%>
+        <%  End If%>
         <h1>Score</h1>
         <% If Not Model.IsGameOver Then%>
             <%= Html.ActionLink("Add Score", "AddScore", "Home", New With {.gameId = Model.GameId, .roundNumber = Model.NextRoundNumber}, New With {.class = "ui-btn-right"})%>        

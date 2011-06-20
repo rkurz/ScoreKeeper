@@ -2,7 +2,7 @@
 
 <asp:Content ID="MainContent" ContentPlaceHolderID="MainContent" runat="server">
     <% Html.BeginForm("StartGame", "Home")%>
-        <div data-role="header">
+        <div data-role="header" data-backbtn="false">
             <h1>Start Game</h1>
         </div>
         <div data-role="content">

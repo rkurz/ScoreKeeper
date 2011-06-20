@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="VB" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage(Of Rummy.IndexViewModel)" %>
 
 <asp:Content ID="MainContent" ContentPlaceHolderID="MainContent" runat="server">
-    <div data-role="header">
+    <div data-role="header" data-backbtn="false">
         <h1>Rummy</h1>
         <a href="<%= Url.Action("StartGame", "Home") %>" class="ui-btn-right">New Game</a>
     </div>

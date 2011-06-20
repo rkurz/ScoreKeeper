@@ -4,7 +4,7 @@
     <% Html.BeginForm("AddScore", "Home")%>
         <%= Html.Hidden("gameId", Model.GameId)%>
         <%= Html.Hidden("roundNumber", Model.RoundNumber)%>
-        <div data-role="header">
+        <div data-role="header" data-backbtn="false">
             <h1>Round <%= Model.RoundNumber %></h1>
         </div>
         <div data-role="content">

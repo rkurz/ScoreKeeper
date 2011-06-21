@@ -4,4 +4,4 @@ bin
 obj
 *.pdb
 App_Data
-*.xml
+*.Publish.xml

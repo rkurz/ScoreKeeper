@@ -8,7 +8,8 @@
         <div data-role="content">
             <div data-role="fieldcontain">
                 <label for="PointsRequiredToWin">Points To Win:</label>
-                <%= Html.TextBoxFor(Function(m) m.PointsRequiredToWin)%>
+                <%= Html.TextBoxFor(Function(m) m.PointsRequiredToWin, New With {.type = "number"})%>
+                <%= Html.ValidationMessageFor(Function(m) m.PointsRequiredToWin) %>
             </div>
             <!--
             <div data-role="fieldcontain">

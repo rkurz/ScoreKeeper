@@ -41,6 +41,16 @@
             Assert.IsTrue(WebBrowser.ContainsText("Wins"))
             Assert.IsTrue(WebBrowser.ContainsText("Losses"))
         End Sub
+
+        <[Then]("I will remain on the start game page")>
+        Public Sub ThenIWillRemainOnTheStartGamePage()
+            Assert.IsTrue(WebBrowser.Page(Of StartGamePage).IsActivePage)
+        End Sub
+
+        <[Then]("I will be shown an error message indicating an invalid point value")>
+        Public Sub ThenIWillBeShownAnErrorMessageIndicatingAnInvalidPointValue()
+            Assert.IsTrue(WebBrowser.Page(Of StartGamePage).ErrorMessage.Exists)
+        End Sub
     End Class
 
 End Namespace

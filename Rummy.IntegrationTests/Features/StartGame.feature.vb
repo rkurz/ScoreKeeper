@@ -57,15 +57,15 @@ Namespace Rummy.IntegrationTests.Features
         End Sub
         
         <NUnit.Framework.TestAttribute(),  _
-         NUnit.Framework.DescriptionAttribute("Start a game with a negative point requirement returns an error message"),  _
-         NUnit.Framework.IgnoreAttribute()>  _
+         NUnit.Framework.DescriptionAttribute("Start a game with a negative point requirement returns an error message")>  _
         Public Overridable Sub StartAGameWithANegativePointRequirementReturnsAnErrorMessage()
-            Dim scenarioInfo As TechTalk.SpecFlow.ScenarioInfo = New TechTalk.SpecFlow.ScenarioInfo("Start a game with a negative point requirement returns an error message", New String() {"ignore"})
+            Dim scenarioInfo As TechTalk.SpecFlow.ScenarioInfo = New TechTalk.SpecFlow.ScenarioInfo("Start a game with a negative point requirement returns an error message", CType(Nothing,String()))
             Me.ScenarioSetup(scenarioInfo)
             testRunner.Given("I am on the start game page")
             testRunner.And("I have entered -10 into the points required to win field")
             testRunner.When("I press the Start button")
-            testRunner.Then("I will be shown an error message indicating an invalid point value")
+            testRunner.Then("I will remain on the start game page")
+            testRunner.And("I will be shown an error message indicating an invalid point value")
             testRunner.CollectScenarioErrors
         End Sub
         

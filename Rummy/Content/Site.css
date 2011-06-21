@@ -27,6 +27,13 @@
     color: Red;
 }
 
+/*
+input[type="number"]
+{
+    width: 50px !important;
+}
+*/
+
 /* Styles for validation helpers
 -----------------------------------------------------------*/
 .field-validation-error

@@ -12,11 +12,11 @@
         End If
     End Function
 
-    Public ReadOnly Property PointsRequiredToWin As TextField
+    Public ReadOnly Property PointsRequiredToWin As NumericTextField
         Get
             Dim container As Div
             container = Document.Div(Find.ByClass("ui-page ui-body-c ui-page-active"))
-            Return container.TextField(Find.ById("PointsRequiredToWin"))
+            Return container.ElementOfType(Of NumericTextField)(Find.ById("PointsRequiredToWin"))
         End Get
     End Property
 
@@ -29,6 +29,14 @@
     Public ReadOnly Property CancelLink As Link
         Get
             Return Document.Link(Find.ByText("Cancel"))
+        End Get
+    End Property
+
+    Public ReadOnly Property ErrorMessage As Span
+        Get
+            Dim container As Div
+            container = Document.Div(Find.ByClass("ui-page ui-body-c ui-page-active"))
+            Return container.Span(Find.ByClass("field-validation-error"))
         End Get
     End Property
 

@@ -49,7 +49,7 @@
         container = Document.Div(Find.ByClass("ui-page ui-body-c ui-page-active"))
 
         'Ensure "add score" link is hidden, "new game" link is visible, "game over" text is shown, winner highlighted in red.
-        If Me.NewGameLink.Exists Then
+        If Me.AddScoreLink.Exists Then
             Return False
         End If
         If Not Me.NewGameLink.Exists Then

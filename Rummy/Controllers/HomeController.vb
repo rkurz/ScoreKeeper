@@ -36,21 +36,25 @@
         Dim viewScoreModel As ViewScoreViewModel
         Dim game As Game
 
-        'TODO - Eventually all users to choose players!!
-        players = _playerService.FindAll.ToList
+        If model.PointsRequiredToWin > 0 Then
+            'TODO - Eventually all users to choose players!!
+            players = _playerService.FindAll.ToList
 
-        game = _gameService.CreateGame(DateTime.Now, model.PointsRequiredToWin, players)
+            game = _gameService.CreateGame(DateTime.Now, model.PointsRequiredToWin, players)
 
-        viewScoreModel = New ViewScoreViewModel
-        viewScoreModel.GameId = game.GameId
-        viewScoreModel.NextRoundNumber = 1
-        viewScoreModel.Players = _playerService.FindByGame(game.GameId)
-        viewScoreModel.PlayerScores = _gameService.FindPointDetails(game.GameId)
-        viewScoreModel.IsGameOver = False
-        viewScoreModel.GamePlayers = _gameService.FindPlayerDetails(game.GameId)
+            viewScoreModel = New ViewScoreViewModel
+            viewScoreModel.GameId = game.GameId
+            viewScoreModel.NextRoundNumber = 1
+            viewScoreModel.Players = _playerService.FindByGame(game.GameId)
+            viewScoreModel.PlayerScores = _gameService.FindPointDetails(game.GameId)
+            viewScoreModel.IsGameOver = False
+            viewScoreModel.GamePlayers = _gameService.FindPlayerDetails(game.GameId)
 
-        Return RedirectToAction("ViewScore", New With {.gameId = game.GameId, .nextRoundNumber = 1})
-        'Return View("ViewScore", viewScoreModel)
+            Return RedirectToAction("ViewScore", New With {.gameId = game.GameId, .nextRoundNumber = 1})
+        Else
+            ModelState.AddModelError("PointsRequiredToWin", "You must enter a value greater than zero.")
+            Return View(model)
+        End If
     End Function
 
     Function ViewScore(ByVal gameId As Integer, ByVal nextRoundNumber As Integer) As ActionResult

@@ -4,3 +4,4 @@ bin
 obj
 *.pdb
 App_Data
+*.xml

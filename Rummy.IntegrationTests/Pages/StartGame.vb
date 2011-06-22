@@ -1,42 +1,31 @@
 ﻿Public Class StartGamePage
-    Inherits Page
+    Inherits MobilePage
 
-    Public Function IsActivePage() As Boolean
-        Dim containerDiv As Div
-
-        containerDiv = Document.Div(Find.ByClass("ui-page ui-body-c ui-page-active"))
-        If containerDiv.GetAttributeValue("data-url").Contains("Home/StartGame") Then
-            Return True
-        Else
-            Return False
-        End If
-    End Function
+    Public Sub New()
+        MyBase.New("Home/StartGame")
+    End Sub
 
     Public ReadOnly Property PointsRequiredToWin As NumericTextField
         Get
-            Dim container As Div
-            container = Document.Div(Find.ByClass("ui-page ui-body-c ui-page-active"))
-            Return container.ElementOfType(Of NumericTextField)(Find.ById("PointsRequiredToWin"))
+            Return Me.ActiveContent.ElementOfType(Of NumericTextField)(Find.ById("PointsRequiredToWin"))
         End Get
     End Property
 
     Public ReadOnly Property SubmitButton As Button
         Get
-            Return Document.Button(Find.ByValue("Start"))
+            Return Me.ActiveContent.Button(Find.ByValue("Start"))
         End Get
     End Property
 
     Public ReadOnly Property CancelLink As Link
         Get
-            Return Document.Link(Find.ByText("Cancel"))
+            Return Me.ActiveContent.Link(Find.ByText("Cancel"))
         End Get
     End Property
 
     Public ReadOnly Property ErrorMessage As Span
         Get
-            Dim container As Div
-            container = Document.Div(Find.ByClass("ui-page ui-body-c ui-page-active"))
-            Return container.Span(Find.ByClass("field-validation-error"))
+            Return Me.ActiveContent.Span(Find.ByClass("field-validation-error"))
         End Get
     End Property
 

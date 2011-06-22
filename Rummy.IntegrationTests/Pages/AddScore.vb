@@ -1,39 +1,19 @@
 ﻿Public Class AddScorePage
-    Inherits Page
+    Inherits MobilePage
 
-    Public Function IsActivePage() As Boolean
-        Dim containerDiv As Div
-
-        containerDiv = Document.Div(Find.ByClass("ui-page ui-body-c ui-page-active"))
-        If containerDiv.GetAttributeValue("data-url").Contains("Home/AddScore") Then
-            Return True
-        Else
-            Return False
-        End If
-    End Function
+    Public Sub New()
+        MyBase.New("Home/AddScore")
+    End Sub
 
     Public ReadOnly Property Points(ByVal playerId As Integer) As NumericTextField
         Get
-            Dim container As Div
-            container = Document.Div(Find.ByClass("ui-page ui-body-c ui-page-active"))
-
-            Return container.ElementOfType(Of NumericTextField)(Find.ById(String.Format("txtPlayer_{0:d}", playerId)))
+            Return Me.ActiveContent.ElementOfType(Of NumericTextField)(Find.ById(String.Format("txtPlayer_{0:d}", playerId)))
         End Get
     End Property
-    'Public ReadOnly Property Points(ByVal playerId As Integer) As TextField
-    '    Get
-    '        'Return Document.Element(Find.ById(String.Format("txtPlayer_{0:d}", playerId))).As(Of TextField)()
-    '        'Return DirectCast(Document.Element(Find.ById(String.Format("txtPlayer_{0:d}", playerId))), TextField)
-    '        'Return Document.TextField(Find.ById(String.Format("txtPlayer_{0:d}", playerId)))
-    '    End Get
-    'End Property
 
     Public ReadOnly Property SubmitButton As Button
         Get
-            Dim container As Div
-            container = Document.Div(Find.ByClass("ui-page ui-body-c ui-page-active"))
-
-            Return container.Button(Find.ByValue("Submit"))
+            Return Me.ActiveContent.Button(Find.ByValue("Submit"))
         End Get
     End Property
 

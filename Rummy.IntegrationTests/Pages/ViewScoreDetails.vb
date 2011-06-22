@@ -1,14 +1,7 @@
 ﻿Public Class ViewScoreDetailsPage
-    Inherits Page
+    Inherits MobilePage
 
-    Public Function IsActivePage() As Boolean
-        Dim containerDiv As Div
-
-        containerDiv = Document.Div(Find.ByClass("ui-page ui-body-c ui-page-active"))
-        If containerDiv.GetAttributeValue("data-url").Contains("Home/ViewScoreDetails") Then
-            Return True
-        Else
-            Return False
-        End If
-    End Function
+    Public Sub New()
+        MyBase.New("Home/ViewScoreDetails")
+    End Sub
 End Class

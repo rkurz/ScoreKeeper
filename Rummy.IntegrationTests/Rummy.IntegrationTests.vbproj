@@ -118,6 +118,7 @@
     </Compile>
     <Compile Include="Pages\AddScore.vb" />
     <Compile Include="Pages\Index.vb" />
+    <Compile Include="Pages\MobilePage.vb" />
     <Compile Include="Pages\StartGame.vb" />
     <Compile Include="Pages\ViewScore.vb" />
     <Compile Include="Pages\ViewScoreDetails.vb" />

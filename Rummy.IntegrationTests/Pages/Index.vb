@@ -1,12 +1,13 @@
 ﻿Public Class IndexPage
-    Inherits Page
+    Inherits MobilePage
+
+    Public Sub New()
+        MyBase.New("Home/Index")
+    End Sub
 
     Public ReadOnly Property NewGameLink As Link
         Get
-            Dim container As Div
-            container = Document.Div(Find.ByClass("ui-page ui-body-c ui-page-active"))
-
-            Return container.Link(Find.ByText("New Game"))
+            Return Me.ActiveContent.Link(Find.ByText("New Game"))
         End Get
     End Property
 

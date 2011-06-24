@@ -4,6 +4,7 @@
     Private _gameService As GameService
     Private _playerService As PlayerService
     Private _standingService As StandingService
+    Private _gameHistoryService As GameHistoryService
 
     Public Sub New()
         Dim db As RummyEntities
@@ -15,6 +16,7 @@
         _gameService = New GameService(oc)
         _playerService = New PlayerService(oc)
         _standingService = New StandingService(oc)
+        _gameHistoryService = New GameHistoryService(oc)
     End Sub
 
     Function Index() As ActionResult
@@ -22,6 +24,15 @@
 
         model = New IndexViewModel
         model.Standings = _standingService.Load()
+
+        Return View(model)
+    End Function
+
+    Function GameHistory() As ActionResult
+        Dim model As GameHistoryViewModel
+
+        model = New GameHistoryViewModel
+        model.History = _gameHistoryService.Load
 
         Return View(model)
     End Function

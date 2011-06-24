@@ -28,7 +28,7 @@
         <div data-role="navbar">
             <ul>
                 <li><a href="#" class="ui-btn-active">Standings</a></li>
-                <li><a href="#">History</a></li>
+                <li><%= Html.ActionLink("History", "GameHistory", "Home", New With {.rand = New Random().Next}, Nothing)%></li>
             </ul>
         </div>
     </div>

@@ -1,6 +1,13 @@
-﻿Public Class GameHistory
+﻿Public Enum GameStatus
+    InProgress
+    Complete
+    Deleted
+End Enum
+
+Public Class GameHistory
     Public Property GameId As Integer
     Public Property PlayedOn As DateTime
+    Public Property Status As String
     Public Property Scores As List(Of PlayerScore)
 End Class
 

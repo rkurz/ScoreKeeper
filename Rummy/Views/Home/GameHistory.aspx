@@ -8,7 +8,9 @@
     <div data-role="content">
         <%  For Each game In Model.History %>
             <ul data-role="listview" data-inset="true" <% If game.Status = "inprogress" Then%>data-divider-theme="e"<%End If %>>
-                <li data-role="list-divider" ><%= game.PlayedOn.ToString("MMM dd, yyyy")%></li>
+                <li data-role="list-divider">
+                    <%= game.PlayedOn.ToString("MMM dd, yyyy")%>
+                </li>
                 <% For Each player In game.Scores%>
                     <li>
                         <%= player.PlayerName %>

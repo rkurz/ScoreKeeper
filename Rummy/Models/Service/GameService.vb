@@ -151,4 +151,15 @@
             _gameRepository.SaveChanges()
         End If
     End Sub
+
+    Public Sub DeleteGame(ByVal gameId As Integer)
+        Dim game As Game
+
+        game = FindById(gameId)
+        If game IsNot Nothing Then
+            game.Status = "deleted"
+            _gameRepository.Update(game)
+            _gameRepository.SaveChanges()
+        End If
+    End Sub
 End Class

@@ -37,6 +37,22 @@
         Return View(model)
     End Function
 
+    Function ManageGame(ByVal gameId As Integer) As ActionResult
+        Dim model As ManageGameViewModel
+
+        model = New ManageGameViewModel
+        model.GameId = gameId
+        model.NextRoundNumber = _gameService.FindNextRoundNumber(gameId)
+
+        Return View(model)
+    End Function
+
+    Function DeleteGame(ByVal gameId As Integer) As ActionResult
+        _gameService.DeleteGame(gameId)
+
+        Return RedirectToAction("GameHistory")
+    End Function
+
     Function StartGame() As ActionResult
         Return View()
     End Function

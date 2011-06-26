@@ -23,10 +23,10 @@ Namespace Rummy.IntegrationTests
             Assert.IsTrue(WebBrowser.ContainsText("Losses"))
         End Sub
 
-        <Given("I am on the dashboard page")>
-        Public Sub GivenIAmOnTheDashboardPage()
-            BrowseTo("/Home/Index")
-        End Sub
+        '<Given("I am on the dashboard page")>
+        'Public Sub GivenIAmOnTheDashboardPage()
+        '    BrowseTo("/Home/Index")
+        'End Sub
 
         <[When]("I click the new game link")>
         Public Sub WhenIClickTheNewGameLink()

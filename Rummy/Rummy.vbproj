@@ -143,6 +143,7 @@
     <Compile Include="ViewModels\AddScoreViewModel.vb" />
     <Compile Include="ViewModels\GameHistoryViewModel.vb" />
     <Compile Include="ViewModels\IndexViewModel.vb" />
+    <Compile Include="ViewModels\ManageGameViewModel.vb" />
     <Compile Include="ViewModels\StartGameViewModel.vb" />
     <Compile Include="ViewModels\ViewScoreViewModel.vb" />
   </ItemGroup>
@@ -175,6 +176,7 @@
     <Content Include="Views\Home\AddScore.aspx" />
     <Content Include="Views\Home\GameHistory.aspx" />
     <Content Include="Views\Home\Index.aspx" />
+    <Content Include="Views\Home\ManageGame.aspx" />
     <Content Include="Views\Home\StartGame.aspx" />
     <Content Include="Views\Home\ViewScore.aspx" />
     <Content Include="Views\Home\ViewScoreDetails.aspx" />

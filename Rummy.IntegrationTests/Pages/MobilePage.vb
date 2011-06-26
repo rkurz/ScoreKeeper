@@ -32,4 +32,16 @@
             Return Document.Div(Find.ByClass("ui-page ui-body-c ui-page-active"))
         End Get
     End Property
+
+    ''' <summary>
+    ''' Gets the content area for a page opened as a dialog window.
+    ''' </summary>
+    ''' <remarks>
+    ''' We could get rid of this if can "find" the div using only part of the class (ie/ a div that contains "ui-page-active")
+    ''' </remarks>
+    Public ReadOnly Property ActiveDialogContent As Div
+        Get
+            Return Document.Div(Find.ByClass("ui-dialog ui-page ui-body-a ui-page-active"))
+        End Get
+    End Property
 End Class

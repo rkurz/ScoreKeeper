@@ -11,6 +11,12 @@
         End Get
     End Property
 
+    Public ReadOnly Property GameHistoryLink As Link
+        Get
+            Return Me.ActiveContent.Link(Find.ByText("History"))
+        End Get
+    End Property
+
     Public Sub StartNewGame()
         NewGameLink.Click()
     End Sub

@@ -67,7 +67,8 @@
     <Reference Include="TechTalk.SpecFlow">
       <HintPath>..\Dependencies\TechTalk.SpecFlow.dll</HintPath>
     </Reference>
-    <Reference Include="WatiN.Core">
+    <Reference Include="WatiN.Core, Version=2.0.20.0, Culture=neutral, PublicKeyToken=db7cfd3acb5ad44e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Dependencies\WatiN.Core.dll</HintPath>
     </Reference>
   </ItemGroup>
@@ -89,6 +90,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Dashboard.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Features\GameHistory.feature.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GameHistory.feature</DependentUpon>
     </Compile>
     <Compile Include="Features\StartGame.feature.vb">
       <AutoGen>True</AutoGen>
@@ -117,13 +123,17 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="Pages\AddScore.vb" />
+    <Compile Include="Pages\GameHistory.vb" />
     <Compile Include="Pages\Index.vb" />
+    <Compile Include="Pages\ManageGame.vb" />
     <Compile Include="Pages\MobilePage.vb" />
     <Compile Include="Pages\StartGame.vb" />
     <Compile Include="Pages\ViewScore.vb" />
     <Compile Include="Pages\ViewScoreDetails.vb" />
     <Compile Include="StepDefinitionBase.vb" />
     <Compile Include="StepDefinitions\Dashboard.vb" />
+    <Compile Include="StepDefinitions\GameHistory.vb" />
+    <Compile Include="StepDefinitions\Shared.vb" />
     <Compile Include="StepDefinitions\StartGame.vb" />
     <Compile Include="StepDefinitions\ViewScore.vb" />
   </ItemGroup>
@@ -140,6 +150,10 @@
     <None Include="Features\Dashboard.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>Dashboard.feature.vb</LastGenOutput>
+    </None>
+    <None Include="Features\GameHistory.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>GameHistory.feature.vb</LastGenOutput>
     </None>
     <None Include="Features\StartGame.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>

@@ -25,7 +25,9 @@
                 </fieldset>
                 <%= Html.ValidationMessageFor(Function(m) m.SelectedPlayers)%>
             </div>
-            
+            <div data-role="fieldcontain">
+                <a href="<%= Url.Action("EditPlayer", "Home", New With {.rand = new Random().Next})%>" data-role="button">Add Player</a>
+            </div>
         </div>
         <div data-role="footer" class="ui-bar">
             <a href="<%= Url.Action("Index", "Home") %>" data-role="button">Cancel</a>

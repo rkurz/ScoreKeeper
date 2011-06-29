@@ -173,4 +173,39 @@
 
         Return View("ViewScore", viewScoreModel)
     End Function
+
+    Function EditPlayer() As ActionResult
+        Dim model As EditPlayerViewModel
+        model = New EditPlayerViewModel
+        model.PlayerId = 0
+        model.PlayerName = String.Empty
+
+        Return View(model)
+    End Function
+
+    <HttpPost()>
+    Function EditPlayer(ByVal model As EditPlayerViewModel) As ActionResult
+        Dim player As Player
+
+        If String.IsNullOrWhiteSpace(model.PlayerName) Then
+            ModelState.AddModelError("PlayerName", "You must enter a name value.")
+            Return View(model)
+        End If
+
+        If model.PlayerId > 0 Then
+            'Edit existing player.
+            'TODO - IMPLEMENT THIS WHEN NEEDED
+        Else
+            'Create new player.
+            player = _playerService.CreatePlayer(model.PlayerName)
+        End If
+
+        Return RedirectToAction("StartGame")
+    End Function
+
+    '<HttpPost()>
+    'Function EditPlayer(ByVal playerName As String) As ActionResult
+    '    _playerService.CreatePlayer(playerName)
+    '    Return RedirectToAction("StartGame")
+    'End Function
 End Class

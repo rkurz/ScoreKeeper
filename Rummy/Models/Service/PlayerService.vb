@@ -18,4 +18,14 @@
                Where gp.GameId = gameId
                Select p).ToList
     End Function
+
+    Public Function CreatePlayer(name As String) As Player
+        Dim player As Player
+
+        player = player.CreatePlayer(0, name)
+        _playerRepository.Create(player)
+        _playerRepository.SaveChanges()
+
+        Return player
+    End Function
 End Class

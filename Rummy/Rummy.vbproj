@@ -17,6 +17,7 @@
     <OptionStrict>Off</OptionStrict>
     <OptionInfer>On</OptionInfer>
     <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>false</UseIISExpress>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -141,6 +142,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="ViewModels\AddScoreViewModel.vb" />
+    <Compile Include="ViewModels\EditPlayerViewModel.vb" />
     <Compile Include="ViewModels\GameHistoryViewModel.vb" />
     <Compile Include="ViewModels\IndexViewModel.vb" />
     <Compile Include="ViewModels\ManageGameViewModel.vb" />
@@ -174,6 +176,7 @@
       <DependentUpon>Rummy.mdf</DependentUpon>
     </Content>
     <Content Include="Views\Home\AddScore.aspx" />
+    <Content Include="Views\Home\EditPlayer.aspx" />
     <Content Include="Views\Home\GameHistory.aspx" />
     <Content Include="Views\Home\Index.aspx" />
     <Content Include="Views\Home\ManageGame.aspx" />

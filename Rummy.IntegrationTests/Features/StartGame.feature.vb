@@ -51,8 +51,10 @@ Namespace Rummy.IntegrationTests.Features
             Me.ScenarioSetup(scenarioInfo)
             testRunner.Given("I am on the start game page")
             testRunner.And("I have entered 500 into the points required to win field")
+            testRunner.And("I have selected players Kelly and Rob")
             testRunner.When("I press the Start button")
             testRunner.Then("I will be redirected to the view score page")
+            testRunner.And("I will see point values for Kelly and Rob")
             testRunner.CollectScenarioErrors
         End Sub
         
@@ -78,6 +80,19 @@ Namespace Rummy.IntegrationTests.Features
             testRunner.And("I have entered 20 into the points required to win field")
             testRunner.When("I press the Cancel button")
             testRunner.Then("I will be redirected to the dashboard")
+            testRunner.CollectScenarioErrors
+        End Sub
+        
+        <NUnit.Framework.TestAttribute(),  _
+         NUnit.Framework.DescriptionAttribute("Start a game with no players selected returns an error message")>  _
+        Public Overridable Sub StartAGameWithNoPlayersSelectedReturnsAnErrorMessage()
+            Dim scenarioInfo As TechTalk.SpecFlow.ScenarioInfo = New TechTalk.SpecFlow.ScenarioInfo("Start a game with no players selected returns an error message", CType(Nothing,String()))
+            Me.ScenarioSetup(scenarioInfo)
+            testRunner.Given("I am on the start game page")
+            testRunner.And("I have entered 500 into the points required to win field")
+            testRunner.When("I press the Start button")
+            testRunner.Then("I will remain on the start game page")
+            testRunner.And("I will be shown an error message indicating no players were chosen")
             testRunner.CollectScenarioErrors
         End Sub
     End Class

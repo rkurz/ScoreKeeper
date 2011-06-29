@@ -29,8 +29,16 @@
         End Get
     End Property
 
+    Public ReadOnly Property PlayerCheckbox(ByVal playerId As Integer) As CheckBox
+        Get
+            Return Me.ActiveContent.CheckBox(Find.ById(String.Format("cbPlayer_{0:d}", playerId)))
+        End Get
+    End Property
+
     Public Sub StartNewGame(ByVal pointsRequiredToWin As String)
         Me.PointsRequiredToWin.TypeText(pointsRequiredToWin)
+        Me.PlayerCheckbox(1).Click()
+        Me.PlayerCheckbox(2).Click()
         Me.SubmitButton.Click()
     End Sub
 End Class

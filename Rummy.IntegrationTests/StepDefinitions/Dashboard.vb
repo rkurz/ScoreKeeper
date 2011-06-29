@@ -38,7 +38,6 @@ Namespace Rummy.IntegrationTests
         <[Then]("I should be redirected to the start game page")>
         Public Sub ThenIShouldBeRedirectedToTheStartGamePage()
             Assert.IsTrue(WebBrowser.Page(Of StartGamePage).IsActivePage)
-            'Assert.IsTrue(WebBrowser.Page(Of StartGamePage).PointsRequiredToWin.Exists)
         End Sub
 
         <Given("I have finished a game")>

@@ -33,6 +33,10 @@
         Return Me.ActiveContent.Label(Find.ById(String.Format("lblScore_{0:d}", playerId))).Text
     End Function
 
+    Public Function PlayerScoreExists(ByVal playerId As Integer) As Boolean
+        Return Me.ActiveContent.Label(Find.ById(String.Format("lblScore_{0:d}", playerId))).Exists
+    End Function
+
     Public Function IsInGameOverMode() As Boolean
         'Ensure "add score" link is hidden, "new game" link is visible, "game over" text is shown, winner highlighted in red.
         If Me.AddScoreLink.Exists Then

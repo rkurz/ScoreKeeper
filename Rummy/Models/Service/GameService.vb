@@ -11,15 +11,15 @@
         _playerService = New PlayerService(context)
     End Sub
 
-    Public Function CreateGame(ByVal playedOn As DateTime, ByVal requiredScore As Integer, ByVal players As List(Of Player)) As Game
+    Public Function CreateGame(ByVal playedOn As DateTime, ByVal requiredScore As Integer, ByVal playerIds As List(Of Integer)) As Game
         Dim game As Game
 
         game = game.CreateGame(0, playedOn, "inprogress", requiredScore)
         _gameRepository.Create(game)
         _gameRepository.SaveChanges()
 
-        For Each player As Player In players
-            _gamePlayerRepository.Create(GamePlayer.CreateGamePlayer(game.GameId, player.PlayerId, "N", 0))
+        For Each playerId As Integer In playerIds
+            _gamePlayerRepository.Create(GamePlayer.CreateGamePlayer(game.GameId, playerId, "N", 0))
             _gamePlayerRepository.SaveChanges()
         Next
 

@@ -13,6 +13,12 @@
             WebBrowser.Page(Of StartGamePage).PointsRequiredToWin.TypeText(points.ToString)
         End Sub
 
+        <Given("I have selected players Kelly and Rob")>
+        Public Sub GivenIHaveSelectedPlayersKellyAndRob()
+            WebBrowser.Page(Of StartGamePage).PlayerCheckbox(1).Click()
+            WebBrowser.Page(Of StartGamePage).PlayerCheckbox(2).Click()
+        End Sub
+
         <[When]("I press the Start button")>
         Public Sub WhenIPressTheStartButton()
             WebBrowser.Page(Of StartGamePage).SubmitButton.Click()
@@ -54,6 +60,17 @@
         <[Then]("I will be shown an error message indicating an invalid point value")>
         Public Sub ThenIWillBeShownAnErrorMessageIndicatingAnInvalidPointValue()
             Assert.IsTrue(WebBrowser.Page(Of StartGamePage).ErrorMessage.Exists)
+        End Sub
+
+        <[Then]("I will be shown an error message indicating no players were chosen")>
+        Public Sub ThenIWillBeShownAnErrorMessageIndicatingNoPlayersWereChosen()
+            Assert.IsTrue(WebBrowser.Page(Of StartGamePage).ErrorMessage.Exists)
+        End Sub
+
+        <[Then]("I will see point values for Kelly and Rob")>
+        Public Sub ThenIWillSeePointValuesForKellyAndRob()
+            Assert.IsTrue(WebBrowser.Page(Of ViewScorePage).PlayerScoreExists(1))
+            Assert.IsTrue(WebBrowser.Page(Of ViewScorePage).PlayerScoreExists(2))
         End Sub
     End Class
 

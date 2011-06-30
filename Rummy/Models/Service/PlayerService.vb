@@ -19,7 +19,7 @@
                Select p).ToList
     End Function
 
-    Public Function CreatePlayer(name As String) As Player
+    Public Function CreatePlayer(ByVal name As String) As Player
         Dim player As Player
 
         player = player.CreatePlayer(0, name)
@@ -28,4 +28,9 @@
 
         Return player
     End Function
+
+    Public Sub DeletePlayer(ByVal player As Player)
+        _playerRepository.Delete(player)
+        _playerRepository.SaveChanges()
+    End Sub
 End Class

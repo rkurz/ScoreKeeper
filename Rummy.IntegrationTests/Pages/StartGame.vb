@@ -35,6 +35,12 @@
         End Get
     End Property
 
+    Public ReadOnly Property PlayerLabel(ByVal playerName As String) As Label
+        Get
+            Return Me.ActiveContent.Label(Find.ByText(playerName))
+        End Get
+    End Property
+
     Public Sub StartNewGame(ByVal pointsRequiredToWin As String)
         Me.PointsRequiredToWin.TypeText(pointsRequiredToWin)
         Me.PlayerCheckbox(1).Click()

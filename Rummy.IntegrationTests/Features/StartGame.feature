@@ -1,7 +1,7 @@
 ﻿Feature: StartGame
 	The StartGame page allows the user to set the number of points required to win the game.
 
-Scenario: Start a game with a valid point requirement
+Scenario: Start a game with a valid point requirement and players
 	Given I am on the start game page
 	And I have entered 500 into the points required to win field
     And I have selected players Kelly and Rob

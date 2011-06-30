@@ -60,6 +60,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -90,6 +91,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Dashboard.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Features\EditPlayer.feature.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EditPlayer.feature</DependentUpon>
     </Compile>
     <Compile Include="Features\GameHistory.feature.vb">
       <AutoGen>True</AutoGen>
@@ -123,6 +129,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="Pages\AddScore.vb" />
+    <Compile Include="Pages\EditPlayer.vb" />
     <Compile Include="Pages\GameHistory.vb" />
     <Compile Include="Pages\Index.vb" />
     <Compile Include="Pages\ManageGame.vb" />
@@ -132,6 +139,7 @@
     <Compile Include="Pages\ViewScoreDetails.vb" />
     <Compile Include="StepDefinitionBase.vb" />
     <Compile Include="StepDefinitions\Dashboard.vb" />
+    <Compile Include="StepDefinitions\EditPlayer.vb" />
     <Compile Include="StepDefinitions\GameHistory.vb" />
     <Compile Include="StepDefinitions\Shared.vb" />
     <Compile Include="StepDefinitions\StartGame.vb" />
@@ -150,6 +158,10 @@
     <None Include="Features\Dashboard.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>Dashboard.feature.vb</LastGenOutput>
+    </None>
+    <None Include="Features\EditPlayer.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>EditPlayer.feature.vb</LastGenOutput>
     </None>
     <None Include="Features\GameHistory.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
@@ -173,7 +185,12 @@
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Rummy\Rummy.vbproj">
+      <Project>{32CB2C8D-331C-4E28-8946-C28D5D829EB3}</Project>
+      <Name>Rummy</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -14,7 +14,8 @@
     Public Function CreateGame(ByVal playedOn As DateTime, ByVal requiredScore As Integer, ByVal playerIds As List(Of Integer)) As Game
         Dim game As Game
 
-        game = game.CreateGame(0, playedOn, "inprogress", requiredScore)
+        game = game.CreateGame(playedOn, GameStatus.InProgress, requiredScore)
+
         _gameRepository.Create(game)
         _gameRepository.SaveChanges()
 
@@ -146,7 +147,7 @@
         'Set game status to finished
         game = FindById(gameId)
         If game IsNot Nothing Then
-            game.Status = "complete"
+            game.Status = GameStatus.Complete
             _gameRepository.Update(game)
             _gameRepository.SaveChanges()
         End If
@@ -157,7 +158,7 @@
 
         game = FindById(gameId)
         If game IsNot Nothing Then
-            game.Status = "deleted"
+            game.Status = GameStatus.Deleted
             _gameRepository.Update(game)
             _gameRepository.SaveChanges()
         End If

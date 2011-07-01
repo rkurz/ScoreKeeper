@@ -1,9 +1,4 @@
-﻿Public Enum GameStatus
-    InProgress
-    Complete
-    Deleted
-End Enum
-
+﻿
 Public Class GameHistory
     Public Property GameId As Integer
     Public Property PlayedOn As DateTime

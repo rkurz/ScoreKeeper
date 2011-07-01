@@ -111,6 +111,7 @@
     <Compile Include="Global.asax.vb">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Game.vb" />
     <Compile Include="Models\GameHistory.vb" />
     <Compile Include="Models\Repository\GamePlayerRepository.vb" />
     <Compile Include="Models\Repository\GamePointsByRoundRepository.vb" />

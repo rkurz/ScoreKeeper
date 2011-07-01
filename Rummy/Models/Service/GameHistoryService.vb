@@ -14,9 +14,12 @@
         Dim report As List(Of GameHistory)
         Dim reportItem As GameHistory
         Dim gameId As Integer
+        Dim gameStatusComplete As String = GameStatus.Complete.ToString
+        Dim gameStatusInProgress As String = GameStatus.InProgress.ToString
 
         games = (From g In _gameRepository.FindAll
-                 Where g.Status = "complete" OrElse g.Status = "inprogress"
+                 Where String.Compare(g.StatusString, gameStatusComplete, True) = 0 OrElse
+                       String.Compare(g.StatusString, gameStatusInProgress, True) = 0
                  Order By g.PlayedOn Descending
                  Select g)
         Dim players = (From gp In _gamePlayerRepository.FindAll

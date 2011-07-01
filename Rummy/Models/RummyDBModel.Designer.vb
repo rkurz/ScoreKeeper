@@ -16,7 +16,7 @@ Imports System.ComponentModel
 Imports System.Xml.Serialization
 Imports System.Runtime.Serialization
 
-<Assembly: EdmSchemaAttribute("e6c0fdcc-5b81-4448-97fb-bafea506e5dd")>
+<Assembly: EdmSchemaAttribute("59d9283e-4aa5-44f2-978d-efcbf280c47c")>
 
 #Region "Contexts"
 
@@ -174,13 +174,13 @@ Public Partial Class Game
     ''' </summary>
     ''' <param name="gameId">Initial value of the GameId property.</param>
     ''' <param name="playedOn">Initial value of the PlayedOn property.</param>
-    ''' <param name="status">Initial value of the Status property.</param>
+    ''' <param name="statusString">Initial value of the StatusString property.</param>
     ''' <param name="requiredScoreToWin">Initial value of the RequiredScoreToWin property.</param>
-    Public Shared Function CreateGame(gameId As Global.System.Int32, playedOn As Global.System.DateTime, status As Global.System.String, requiredScoreToWin As Global.System.Int32) As Game
+    Public Shared Function CreateGame(gameId As Global.System.Int32, playedOn As Global.System.DateTime, statusString As Global.System.String, requiredScoreToWin As Global.System.Int32) As Game
         Dim game as Game = New Game
         game.GameId = gameId
         game.PlayedOn = playedOn
-        game.Status = status
+        game.StatusString = statusString
         game.RequiredScoreToWin = requiredScoreToWin
         Return game
     End Function
@@ -245,24 +245,24 @@ Public Partial Class Game
     ''' </summary>
     <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=false)>
     <DataMemberAttribute()>
-    Public Property Status() As Global.System.String
+    Public Property StatusString() As Global.System.String
         Get
-            Return _Status
+            Return _StatusString
         End Get
         Set
-            OnStatusChanging(value)
-            ReportPropertyChanging("Status")
-            _Status = StructuralObject.SetValidValue(value, false)
-            ReportPropertyChanged("Status")
-            OnStatusChanged()
+            OnStatusStringChanging(value)
+            ReportPropertyChanging("StatusString")
+            _StatusString = StructuralObject.SetValidValue(value, false)
+            ReportPropertyChanged("StatusString")
+            OnStatusStringChanged()
         End Set
     End Property
 
-    Private _Status As Global.System.String
-    Private Partial Sub OnStatusChanging(value As Global.System.String)
+    Private _StatusString As Global.System.String
+    Private Partial Sub OnStatusStringChanging(value As Global.System.String)
     End Sub
 
-    Private Partial Sub OnStatusChanged()
+    Private Partial Sub OnStatusStringChanged()
     End Sub
 
     ''' <summary>

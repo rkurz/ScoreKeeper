@@ -65,7 +65,7 @@
           </Key>
           <Property Name="GameId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="PlayedOn" Type="DateTime" Nullable="false" />
-          <Property Name="Status" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="StatusString" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
           <Property Name="RequiredScoreToWin" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="GamePlayer">
@@ -105,7 +105,7 @@
           <EntitySetMapping Name="Games"><EntityTypeMapping TypeName="Rummy.Game"><MappingFragment StoreEntitySet="Game">
             <ScalarProperty Name="GameId" ColumnName="GameId" />
             <ScalarProperty Name="PlayedOn" ColumnName="PlayedOn" />
-            <ScalarProperty Name="Status" ColumnName="Status" />
+            <ScalarProperty Name="StatusString" ColumnName="Status" />
             <ScalarProperty Name="RequiredScoreToWin" ColumnName="RequiredScoreToWin" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
           <EntitySetMapping Name="GamePlayers"><EntityTypeMapping TypeName="Rummy.GamePlayer"><MappingFragment StoreEntitySet="GamePlayer">

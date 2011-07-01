@@ -8,7 +8,7 @@
     <div data-role="content">
         <%  For Each game In Model.History %>
             <ul data-role="listview" data-inset="true">
-                <li data-role="list-divider" <% If game.Status = "inprogress" Then%>data-theme="e"<%Else %>data-theme="b"<%End If %>>
+                <li data-role="list-divider" <% If game.Status = Rummy.GameStatus.InProgress Then%>data-theme="e"<%Else %>data-theme="b"<%End If %>>
                     <a href="<%= Url.Action("ManageGame", "Home", New With {.gameId = game.GameId, .rand = new Random().Next})%>" data-rel="dialog"><%= game.PlayedOn.ToString("dddd MMM dd, yyyy")%></a>
                 </li>
                 <% For Each player In game.Scores%>

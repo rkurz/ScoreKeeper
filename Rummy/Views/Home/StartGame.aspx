@@ -23,10 +23,10 @@
                         <label for="cbPlayer_<%=player.PlayerId %>"><%= player.Name%></label>
                     <% Next%>
                 </fieldset>
+                <div>
+                    <a href="<%= Url.Action("EditPlayer", "Home", New With {.rand = new Random().Next})%>" data-role="button">Add Player</a>
+                </div>
                 <%= Html.ValidationMessageFor(Function(m) m.SelectedPlayers)%>
-            </div>
-            <div data-role="fieldcontain">
-                <a href="<%= Url.Action("EditPlayer", "Home", New With {.rand = new Random().Next})%>" data-role="button">Add Player</a>
             </div>
         </div>
         <div data-role="footer" class="ui-bar">

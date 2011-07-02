@@ -62,3 +62,20 @@ input[type="number"]
 {
     display: none;
 }
+
+/* Added "important" attribute to styles needed when using a "grid" in a list-divider */
+.ui-btn-up-b-important 
+{
+	border: 1px solid 		#145072 !Important;
+	background: 			#2567ab !Important;
+	font-weight: bold !Important;
+	color: 					#fff !Important;
+	text-shadow: 0 -1px 1px #145072 !Important;
+	background-image: -moz-linear-gradient(top, 
+							#4e89c5, 
+							#2567ab) !Important;
+	background-image: -webkit-gradient(linear,left top,left bottom,
+			color-stop(0, 	#5f9cc5),
+			color-stop(1, 	#396b9e)) !Important;
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#4e89c5', EndColorStr='#2567ab')" !Important;
+}

@@ -7,22 +7,22 @@
         <%= Html.ActionLink("New Game", "StartGame", "Home", New With {.rand = New Random().Next}, New With {.class = "ui-btn-right"})%>
     </div>
     <div data-role="content">
-        <table width="100%" style="vertical-align: middle; text-align: center;">
-            <tr>
-                <th>Player</th>
-                <th>Wins</th>
-                <th>Losses</th>
-                <th>Games Played</th>
-            </tr>
+        <ul class="ui-grid-c" data-role="listview" data-inset="true">
+            <li class="ui-btn-up-b-important" style="height: 20px; padding-right: 15px !Important;">
+                <div class="ui-block-a" style="text-align: center;">Player</div>
+                <div class="ui-block-b" style="text-align: center;">Wins</div>
+                <div class="ui-block-c" style="text-align: center;">Losses</div>
+                <div class="ui-block-d" style="text-align: center;">Games Played</div>
+            </li>
             <% For Each item In Model.Standings%>
-                <tr>
-                    <td><%= item.Name %></td>
-                    <td><%= item.Wins%></td>
-                    <td><%= item.Losses%></td>
-                    <td><%= item.GamesPlayed%></td>
-                </tr>
+                <li style="height: 20px; padding-right: 15px !Important;">
+                    <div class="ui-block-a" style="text-align: center;"><%= item.Name %></div>
+                    <div class="ui-block-b" style="text-align: center;"><%= item.Wins%></div>
+                    <div class="ui-block-c" style="text-align: center;"><%= item.Losses%></div>
+                    <div class="ui-block-d" style="text-align: center;"><%= item.GamesPlayed%></div>
+                </li>
             <% Next%>
-        </table>
+        </ul>
     </div>
     <div data-role="footer" data-position="fixed">
         <div data-role="navbar">

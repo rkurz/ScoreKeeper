@@ -15,6 +15,41 @@
         <% End If%>
     </div>
     <div data-role="content">
+        <ul data-role="listview" class="ui-grid-a" data-inset="true">
+            <% For Each item In Model.Players%>
+                <li style="height: 30px; padding-right: 15px !Important;" <% If Model.IsGameOver AndAlso Model.IsWinner(item.PlayerId) Then%> class="winner" <% End If %>>
+                    <div class="ui-block-a score-name" style="text-align: center;"><%= item.Name %></div>
+                    <div class="ui-block-b score-value" style="text-align: center;">
+                        <label class="score-value" id="lblScore_<%= item.PlayerId %>"><%= Model.FindScore(item.PlayerId) %></label>
+                    </div>
+                </li>
+            <% Next%>
+        </ul>
+        <div class="score-container">
+            <% If Model.NextRoundNumber > 1 Then%>
+                <div>
+                    <label id="lblRound" class="score-round">After round: <%= Model.NextRoundNumber-1 %></label>
+                </div>
+            <% End If%>
+            <%  If Model.IsGameOver Then %>
+                <div>
+                    <h1>GAME OVER</h1>
+                </div>
+            <%  End If%>
+        </div>
+        <!--
+        <br />
+        <br />
+        <ul data-role="listview">
+            <% For Each item In Model.Players%>
+                <li <% If Model.IsGameOver AndAlso Model.IsWinner(item.PlayerId) Then%> class="winner" <% End If %>>
+                    <label class="score-name"><%= item.Name %></label>
+                    <span class="ui-li-count score-value"><%= Model.FindScore(item.PlayerId) %></span>
+                </li>
+            <% Next%>
+        </ul>
+        -->
+        <!--
         <div class="score-container">
             <div>
             <% For Each item In Model.Players%>
@@ -35,6 +70,7 @@
                 </div>
             <%  End If%>
         </div>
+        -->
     </div>
     
     <div data-role="footer" data-position="fixed">

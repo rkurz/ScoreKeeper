@@ -12,7 +12,7 @@
                 <div class="ui-block-a" style="text-align: center;">Player</div>
                 <div class="ui-block-b" style="text-align: center;">Wins</div>
                 <div class="ui-block-c" style="text-align: center;">Losses</div>
-                <div class="ui-block-d" style="text-align: center;">Games Played</div>
+                <div class="ui-block-d" style="text-align: center;">Games</div>
             </li>
             <% For Each item In Model.Standings%>
                 <li style="height: 20px; padding-right: 15px !Important;">

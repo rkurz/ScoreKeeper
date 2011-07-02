@@ -53,8 +53,9 @@
             Return False
         End If
 
-        'A div must exist with the "winner" class applied to it.
-        If Not Me.ActiveContent.Div(Find.ByClass("winner")).Exists Then
+        'A listitem must exist with the "winner" class applied to it.
+        'TODO: We shouldn't have to search by the entire class value (ie/ searching for only "winner" would be nicer)
+        If Not Me.ActiveContent.ListItem(Find.ByClass("winner ui-li ui-li-static ui-body-c ui-corner-bottom")).Exists Then
             Return False
         End If
 

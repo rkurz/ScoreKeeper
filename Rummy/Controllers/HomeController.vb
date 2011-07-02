@@ -64,8 +64,6 @@
 
     <HttpPost()>
     Function StartGame(ByVal model As StartGameViewModel) As ActionResult
-        'Dim players As List(Of Player)
-        Dim viewScoreModel As ViewScoreViewModel
         Dim game As Game
 
         If model.SelectedPlayers Is Nothing OrElse model.SelectedPlayers.Count = 0 Then
@@ -82,27 +80,13 @@
 
         game = _gameService.CreateGame(DateTime.Now, model.PointsRequiredToWin, model.SelectedPlayers)
 
-        viewScoreModel = New ViewScoreViewModel
-        viewScoreModel.GameId = game.GameId
-        viewScoreModel.NextRoundNumber = 1
-        viewScoreModel.Players = _playerService.FindByGame(game.GameId)
-        viewScoreModel.PlayerScores = _gameService.FindPointDetails(game.GameId)
-        viewScoreModel.IsGameOver = False
-        viewScoreModel.GamePlayers = _gameService.FindPlayerDetails(game.GameId)
-
         Return RedirectToAction("ViewScore", New With {.gameId = game.GameId, .nextRoundNumber = 1})
     End Function
 
     Function ViewScore(ByVal gameId As Integer, ByVal nextRoundNumber As Integer) As ActionResult
         Dim viewScoreModel As ViewScoreViewModel
 
-        viewScoreModel = New ViewScoreViewModel
-        viewScoreModel.GameId = gameId
-        viewScoreModel.NextRoundNumber = nextRoundNumber
-        viewScoreModel.Players = _playerService.FindByGame(gameId)
-        viewScoreModel.PlayerScores = _gameService.FindPointDetails(gameId)
-        viewScoreModel.IsGameOver = _gameService.IsGameOver(gameId)
-        viewScoreModel.GamePlayers = _gameService.FindPlayerDetails(gameId)
+        viewScoreModel = CreateViewScoreViewModel(gameId, nextRoundNumber)
 
         Return View(viewScoreModel)
     End Function
@@ -110,6 +94,14 @@
     Function ViewScoreDetails(ByVal gameId As Integer, ByVal nextRoundNumber As Integer) As ActionResult
         Dim viewScoreModel As ViewScoreViewModel
 
+        viewScoreModel = CreateViewScoreViewModel(gameId, nextRoundNumber)
+
+        Return View(viewScoreModel)
+    End Function
+
+    Private Function CreateViewScoreViewModel(ByVal gameId As Integer, ByVal nextRoundNumber As Integer) As ViewScoreViewModel
+        Dim viewScoreModel As ViewScoreViewModel
+
         viewScoreModel = New ViewScoreViewModel
         viewScoreModel.GameId = gameId
         viewScoreModel.NextRoundNumber = nextRoundNumber
@@ -118,7 +110,7 @@
         viewScoreModel.IsGameOver = _gameService.IsGameOver(gameId)
         viewScoreModel.GamePlayers = _gameService.FindPlayerDetails(gameId)
 
-        Return View(viewScoreModel)
+        Return viewScoreModel
     End Function
 
     Function AddScore(ByVal gameId As Integer, ByVal roundNumber As Integer) As ActionResult
@@ -136,11 +128,11 @@
 
     <HttpPost()>
     Function AddScore(ByVal gameId As Integer, ByVal roundNumber As Integer, ByVal formCollection As FormCollection)
-        Dim viewScoreModel As ViewScoreViewModel
         Dim players As List(Of Player)
         Dim textboxId As String
         Dim points As Integer
         Dim isGameOver As Boolean
+        Dim nextRoundNumber As Integer
 
         players = _playerService.FindByGame(gameId)
         For Each player As Player In players
@@ -163,15 +155,8 @@
             _gameService.CompleteGame(gameId)
         End If
 
-        viewScoreModel = New ViewScoreViewModel
-        viewScoreModel.GameId = gameId
-        viewScoreModel.NextRoundNumber = _gameService.FindNextRoundNumber(gameId)
-        viewScoreModel.Players = players
-        viewScoreModel.PlayerScores = _gameService.FindPointDetails(gameId)
-        viewScoreModel.IsGameOver = isGameOver
-        viewScoreModel.GamePlayers = _gameService.FindPlayerDetails(gameId)
-
-        Return View("ViewScore", viewScoreModel)
+        nextRoundNumber = _gameService.FindNextRoundNumber(gameId)
+        Return RedirectToAction("ViewScore", New With {.gameId = gameId, .nextRoundNumber = nextRoundNumber})
     End Function
 
     Function EditPlayer() As ActionResult
@@ -203,9 +188,4 @@
         Return RedirectToAction("StartGame")
     End Function
 
-    '<HttpPost()>
-    'Function EditPlayer(ByVal playerName As String) As ActionResult
-    '    _playerService.CreatePlayer(playerName)
-    '    Return RedirectToAction("StartGame")
-    'End Function
 End Class

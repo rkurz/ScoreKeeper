@@ -89,6 +89,18 @@
         Return _gameRepository.FindAll.Where(Function(g) g.GameId = gameId).SingleOrDefault
     End Function
 
+    Public Function FindAllCompleteOrInProgressGames() As IEnumerable(Of Game)
+        'NOTE: Linq To Entities doesn't all calling a "tostring" method within a query.
+        Dim gameStatusComplete As String = GameStatus.Complete.ToString
+        Dim gameStatusInProgress As String = GameStatus.InProgress.ToString
+
+        Return (From g In _gameRepository.FindAll
+                 Where String.Compare(g.StatusString, gameStatusComplete, True) = 0 OrElse
+                       String.Compare(g.StatusString, gameStatusInProgress, True) = 0
+                 Order By g.PlayedOn Descending
+                 Select g)
+    End Function
+
     Public Function FindNextRoundNumber(ByVal gameId As Integer) As Integer
         Dim items As List(Of GamePointsByRound)
 

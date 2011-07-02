@@ -2,11 +2,13 @@
     Private _playerRepository As PlayerRepository
     Private _gameRepository As GameRepository
     Private _gamePlayerRepository As GamePlayerRepository
+    Private _gameService As GameService
 
     Public Sub New(ByVal context As IObjectContext)
         _playerRepository = New PlayerRepository(context)
         _gameRepository = New GameRepository(context)
         _gamePlayerRepository = New GamePlayerRepository(context)
+        _gameService = New GameService(context)
     End Sub
 
     Public Function Load() As List(Of GameHistory)
@@ -14,14 +16,9 @@
         Dim report As List(Of GameHistory)
         Dim reportItem As GameHistory
         Dim gameId As Integer
-        Dim gameStatusComplete As String = GameStatus.Complete.ToString
-        Dim gameStatusInProgress As String = GameStatus.InProgress.ToString
+        
+        games = _gameService.FindAllCompleteOrInProgressGames
 
-        games = (From g In _gameRepository.FindAll
-                 Where String.Compare(g.StatusString, gameStatusComplete, True) = 0 OrElse
-                       String.Compare(g.StatusString, gameStatusInProgress, True) = 0
-                 Order By g.PlayedOn Descending
-                 Select g)
         Dim players = (From gp In _gamePlayerRepository.FindAll
                        Join p In _playerRepository.FindAll On gp.PlayerId Equals p.PlayerId
                        Select New With {.PlayerId = p.PlayerId, .Name = p.Name, .GameId = gp.GameId, .Points = gp.Points, .IsWinner = gp.IsWinner}).ToList

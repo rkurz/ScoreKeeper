@@ -23,4 +23,5 @@
                 Order By Wins Descending
                 Select New Standing With {.PlayerId = PlayerId, .Name = Name, .GamesPlayed = GamesPlayed, .Wins = Wins, .Losses = Losses}).ToList
     End Function
+
 End Class

@@ -105,6 +105,7 @@
     <Compile Include="Code\EnumerableExtensions.vb" />
     <Compile Include="Code\IObjectContext.vb" />
     <Compile Include="Code\ObjectContextAdapter.vb" />
+    <Compile Include="Code\ObjectContextFactory.vb" />
     <Compile Include="Code\Repository.vb" />
     <Compile Include="Code\Utility.vb" />
     <Compile Include="Controllers\HomeController.vb" />

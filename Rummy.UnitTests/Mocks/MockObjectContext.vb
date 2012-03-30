@@ -13,7 +13,7 @@ Public Class MockObjectContext
     Private _objectLists As New Dictionary(Of Type, IList)
 
     ''' <summary>
-    ''' Lists of uncmomitted objects to be added
+    ''' Lists of uncommitted objects to be added
     ''' </summary>   
     Private _addedLists As New Dictionary(Of Type, IList)
 
@@ -40,17 +40,18 @@ Public Class MockObjectContext
         GetDeletedList(Of T)().Add(obj)
     End Sub
 
+    'TODO - Come up with a solution for this.
     Public Sub UpdateObject(Of T As System.Data.Objects.DataClasses.EntityObject)(ByVal obj As T, ByVal entitySetName As String) Implements IObjectContext.UpdateObject
-        Dim updatedList As Dictionary(Of EntityKey, T)
+        'Dim updatedList As Dictionary(Of EntityKey, T)
 
-        updatedList = GetUpdatedList(Of T)()
-        If updatedList.ContainsKey(obj.EntityKey) Then
-            'This object has already been scheduled for an update.  We will overwrite the original update with the new one.
-            updatedList(obj.EntityKey) = obj
-        Else
-            'Add the object to the list of objects waiting to be updated.
-            updatedList.Add(obj.EntityKey, obj)
-        End If
+        'updatedList = GetUpdatedList(Of T)()
+        'If updatedList.ContainsKey(obj.EntityKey) Then
+        '    'This object has already been scheduled for an update.  We will overwrite the original update with the new one.
+        '    updatedList(obj.EntityKey) = obj
+        'Else
+        '    'Add the object to the list of objects waiting to be updated.
+        '    updatedList.Add(obj.EntityKey, obj)
+        'End If
     End Sub
 
     Public Function GetObjects(Of T As System.Data.Objects.DataClasses.EntityObject)() As IQueryable(Of T) Implements IObjectContext.GetObjects

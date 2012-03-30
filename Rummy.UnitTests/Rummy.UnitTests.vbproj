@@ -79,6 +79,7 @@
     <Compile Include="Mocks\MockObjectContext.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="ServiceTests\GameHistoryServiceTests.vb" />
+    <Compile Include="ServiceTests\GameServiceTests.vb" />
     <Compile Include="ServiceTests\PlayerServiceTests.vb" />
     <Compile Include="ServiceTests\StandingServiceTests.vb" />
   </ItemGroup>

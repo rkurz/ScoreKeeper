@@ -7,11 +7,7 @@
     Private _gameHistoryService As GameHistoryService
 
     Public Sub New()
-        Dim db As RummyEntities
-        Dim oc As ObjectContextAdapter
-
-        db = New RummyEntities
-        oc = New ObjectContextAdapter(db)
+        Dim oc = ObjectContextFactory.GetContext()
 
         _gameService = New GameService(oc)
         _playerService = New PlayerService(oc)

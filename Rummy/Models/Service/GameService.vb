@@ -146,7 +146,11 @@
         Dim game As Game
 
         playerScores = _gamePlayerRepository.FindAll.Where(Function(gp) gp.GameId = gameId).ToList
-        highestScore = playerScores.Max(Function(gp) gp.Points)
+        If (playerScores.Count > 0) Then
+            highestScore = playerScores.Max(Function(gp) gp.Points)
+        Else
+            highestScore = 0
+        End If
 
         'Determine who won the game and set their game player record IsWinner flag to Y
         winners = playerScores.Where(Function(gp) gp.Points = highestScore).ToList()
